@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">登录计算器</string>
+    <string name="calculate">计算</string>
+    <string name="submit">提交</string>
+    <string name="passwd">密码</string>
+    <string name="uname">用户名</string>
+    <string name="please_cal">请计算</string>
+    <string name="expression">请输入表达式</string>
+</resources>
