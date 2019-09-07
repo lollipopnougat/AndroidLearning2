@@ -36,6 +36,8 @@ public class CalculatorDecimal {
 
     private Stack<Character> ops = new Stack<>();
     private Stack<BigDecimal> nums = new Stack<>();
+    // 如果不使用BigDecimal会出现精度问题(如0.1+0.2!=0.3，二进制小数循环的处理方法)
+    // 相比来说 C# 对于这些的处理就好一些，相同的算法条件下，使用double也不会出现精度问题(.NET应该做了额外工作)
 
     private boolean IsHigherThanTop(char op) {
         if (ops.empty()) return true;
@@ -50,7 +52,7 @@ public class CalculatorDecimal {
         BigDecimal tmpRes;
         switch (tmpOp) {
             case '+':
-                tmpRes = lhs.add(rhs);
+                tmpRes = lhs.add(rhs); // 注意 Java 不像 C#/C++ 一样支持运算符重载
                 break;
             case '-':
                 tmpRes = lhs.subtract(rhs);
@@ -77,17 +79,11 @@ public class CalculatorDecimal {
             if (Character.isDigit(OrExpress.charAt(i)) || OrExpress.charAt(i) == '.') {
                 tmpNum += OrExpress.charAt(i);
                 if (i == OrExpress.length() - 1) {
-                    //if (double.TryParse(tmpNum, out tmpDouble) == false) throw new Exception("非法数字!");
-                    //tmpDouble = Double.parseDouble(tmpNum);
-                    //nums.push(tmpDouble);
                     nums.push(new BigDecimal(tmpNum));
                     tmpNum = "";
                 }
             } else {
                 if (tmpNum != "") {
-                    //if (double.TryParse(tmpNum, out tmpDouble) == false) throw new Exception("非法数字!");
-                    //tmpDouble = Double.parseDouble(tmpNum);
-                    //nums.push(tmpDouble);
                     nums.push(new BigDecimal(tmpNum));
                     tmpNum = "";
                 }
@@ -106,6 +102,7 @@ public class CalculatorDecimal {
         return nums.peek();
     }
 
+    // 返回double类型的结果函数
     public double GetDoubleResult() throws Exception {
 
         BigDecimal DecimalRes = GetResult();

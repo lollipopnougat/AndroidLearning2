@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 0) {
-            Toast.makeText(this, data.getStringExtra("Status"), Toast.LENGTH_SHORT).show();
-        } else if (resultCode == 1) {
-            double calRes = data.getDoubleExtra("Result",0.00);
+        if (resultCode == RESULT_CANCELED) {
+            Toast.makeText(this, "取消操作", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == RESULT_OK) {
+            double calRes = data.getDoubleExtra("Result", 0.00);
             if (calRes == correctResult) {
                 tv1.setText(randExpression + "=" + calRes);
-                Toast.makeText(this,"正确!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "正确!", Toast.LENGTH_SHORT).show();
             } else Toast.makeText(this, "计算结果错误！", Toast.LENGTH_SHORT).show();
-        }
+        } else Toast.makeText(this, data.getStringExtra("Status"), Toast.LENGTH_SHORT).show();
     }
 
 

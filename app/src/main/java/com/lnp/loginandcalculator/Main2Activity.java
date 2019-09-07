@@ -25,7 +25,7 @@ public class Main2Activity extends AppCompatActivity {
             //Toast.makeText(this, tUname, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             intent.putExtra("Status", "用户名或密码错误");
-            setResult(0, intent);
+            setResult(RESULT_FIRST_USER, intent);
             finish();
         }
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     private CalculatorDecimal calculator = new CalculatorDecimal();
-    String OrExpression = "";
+    private String OrExpression = "";
 
     public void press1(View v) {
         OrExpression += "1";
@@ -116,12 +116,14 @@ public class Main2Activity extends AppCompatActivity {
     public void pressClear(View v) {
         if (OrExpression.length() > 0)
             OrExpression = OrExpression.substring(0, OrExpression.length() - 1);
-        tv2.setText(OrExpression);
+        if (OrExpression.isEmpty()) tv2.setText(R.string.expression);
+        else tv2.setText(OrExpression);
     }
 
     public void clickCal(View v) {
-        if (OrExpression == "") {
-            Toast.makeText(this,"不能计算空值表达式!",Toast.LENGTH_SHORT).show();
+        if (OrExpression.isEmpty()) {
+            Toast.makeText(this, "不能计算空值表达式!", Toast.LENGTH_SHORT).show();
+            return;
         }
         try {
             calculator = new CalculatorDecimal(OrExpression);
@@ -135,13 +137,13 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void clickSubmit(View v) {
-        if(!isCal) {
-            Toast.makeText(this,"请先计算",Toast.LENGTH_SHORT).show();
+        if (!isCal) {
+            Toast.makeText(this, "请先计算", Toast.LENGTH_SHORT).show();
             return;
         }
         Intent intent = new Intent();
         intent.putExtra("Result", calRes);
-        setResult(1, intent);
+        setResult(RESULT_OK, intent);
         finish();
     }
 
