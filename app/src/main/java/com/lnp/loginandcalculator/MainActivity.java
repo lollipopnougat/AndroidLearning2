@@ -2,6 +2,7 @@ package com.lnp.loginandcalculator;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
         btn = findViewById(R.id.submit);
         et1 = findViewById(R.id.uname);
         et2 = findViewById(R.id.pass);

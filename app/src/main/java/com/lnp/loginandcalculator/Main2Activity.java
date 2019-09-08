@@ -1,6 +1,7 @@
 package com.lnp.loginandcalculator;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class Main2Activity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
         tv1 = findViewById(R.id.text1);
         tv2 = findViewById(R.id.expression);
         tv1.setText(getIntent().getStringExtra("Expression") + "=?");

@@ -6,4 +6,6 @@
     <string name="uname">用户名</string>
     <string name="please_cal">请计算</string>
     <string name="expression">请输入表达式</string>
+    <string name="inputUname">请输入用户名</string>
+    <string name="inputPass">请输入密码</string>
 </resources>
