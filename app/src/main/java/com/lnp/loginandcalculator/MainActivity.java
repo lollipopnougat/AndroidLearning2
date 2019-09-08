@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btn = findViewById(R.id.submit);
         et1 = findViewById(R.id.uname);
         et2 = findViewById(R.id.pass);
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             calculator = new CalculatorDecimal(randExpression);
             correctResult = calculator.GetDoubleResult();
-            //startActivity(intent);
             btn.setOnClickListener(v -> {
                 Intent intent = new Intent(this, Main2Activity.class);
                 intent.putExtra("Uname", et1.getText().toString());

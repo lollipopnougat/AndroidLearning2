@@ -22,8 +22,6 @@ public class Main2Activity extends AppCompatActivity {
         String tUname = getIntent().getStringExtra("Uname");
         String tPass = getIntent().getStringExtra("Pass");
         if (!(tUname.equals(correctUname) && tPass.equals(correctPass))) {
-            //Toast.makeText(this, "错误!uname= " + tUname + " pass= " + tPass, Toast.LENGTH_SHORT).show();
-            //Toast.makeText(this, tUname, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             intent.putExtra("Status", "用户名或密码错误");
             setResult(RESULT_FIRST_USER, intent);
@@ -31,7 +29,7 @@ public class Main2Activity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         tv1 = findViewById(R.id.text1);
         tv2 = findViewById(R.id.expression);
         tv1.setText(getIntent().getStringExtra("Expression") + "=?");
