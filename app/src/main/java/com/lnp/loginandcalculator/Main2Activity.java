@@ -122,7 +122,7 @@ public class Main2Activity extends AppCompatActivity {
 
     public void clickCal(View v) {
         if (OrExpression.isEmpty()) {
-            Toast.makeText(this, "不能计算空值表达式!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "不能计算空值表达式!", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
@@ -132,13 +132,13 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "结果是" + calRes, Toast.LENGTH_SHORT).show();
             tv2.setText(OrExpression + "=" + calRes);
         } catch (Exception er) {
-            Toast.makeText(this, er.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), er.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     public void clickSubmit(View v) {
         if (!isCal) {
-            Toast.makeText(this, "请先计算", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "请先计算", Toast.LENGTH_SHORT).show();
             return;
         }
         Intent intent = new Intent();

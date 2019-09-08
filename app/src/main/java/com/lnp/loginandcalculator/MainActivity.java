@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1000);
             });
         } catch (Exception er) {
-            Toast.makeText(this, er.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), er.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_CANCELED) {
-            Toast.makeText(this, "取消操作", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"取消操作", Toast.LENGTH_SHORT).show();
         } else if (resultCode == RESULT_OK) {
             double calRes = data.getDoubleExtra("Result", 0.00);
             if (calRes == correctResult) {
                 tv1.setText(randExpression + "=" + calRes);
-                Toast.makeText(this, "正确!", Toast.LENGTH_SHORT).show();
-            } else Toast.makeText(this, "计算结果错误！", Toast.LENGTH_SHORT).show();
-        } else Toast.makeText(this, data.getStringExtra("Status"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "正确!", Toast.LENGTH_SHORT).show();
+            } else Toast.makeText(getApplicationContext(), "计算结果错误！", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(getApplicationContext(), data.getStringExtra("Status"), Toast.LENGTH_SHORT).show();
     }
 
 
